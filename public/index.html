@@ -3,59 +3,261 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Access Restricted">
-    <title>Access Restricted</title>
+    <title>403 Forbidden</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
+        * {
             margin: 0;
             padding: 0;
-            background-color: #1d1d1d;
-            color: #f00;
+            box-sizing: border-box;
         }
-        header {
-            background-color: #000;
-            color: #f00;
-            padding: 20px 0;
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            line-height: 1.6;
         }
-        main {
-            padding: 50px;
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 30px;
         }
-        footer {
-            background-color: #000;
-            color: #666;
-            padding: 10px 0;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+        
+        .header {
+            border-bottom: 1px solid #2a2a2a;
+            padding-bottom: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .error-code {
+            font-size: 72px;
+            font-weight: 300;
+            color: #dc2626;
+            letter-spacing: -2px;
+            margin-bottom: 10px;
+        }
+        
+        .error-title {
+            font-size: 28px;
+            font-weight: 400;
+            color: #f5f5f5;
+            margin-bottom: 15px;
+        }
+        
+        .timestamp {
+            font-size: 14px;
+            color: #737373;
+            font-family: "Courier New", monospace;
+        }
+        
+        .content {
+            margin-bottom: 50px;
+        }
+        
+        .section {
+            background: #111111;
+            border: 1px solid #1f1f1f;
+            border-radius: 4px;
+            padding: 30px;
+            margin-bottom: 25px;
+        }
+        
+        .section-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #f5f5f5;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .section-content {
+            font-size: 15px;
+            color: #a3a3a3;
+            line-height: 1.8;
+        }
+        
+        .warning-box {
+            background: #1a0f0f;
+            border-left: 4px solid #dc2626;
+            padding: 20px 25px;
+            margin: 25px 0;
+        }
+        
+        .warning-box p {
+            color: #fca5a5;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .info-item {
+            background: #0a0a0a;
+            padding: 15px;
+            border-radius: 3px;
+            border: 1px solid #1f1f1f;
+        }
+        
+        .info-label {
+            font-size: 12px;
+            color: #737373;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+        }
+        
+        .info-value {
+            font-size: 14px;
+            color: #e0e0e0;
+            font-family: "Courier New", monospace;
+        }
+        
+        .legal {
+            background: #0f0f0f;
+            border-top: 1px solid #1f1f1f;
+            padding: 30px;
+            margin-top: 50px;
+        }
+        
+        .legal-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #f5f5f5;
+            margin-bottom: 15px;
+        }
+        
+        .legal-text {
+            font-size: 13px;
+            color: #737373;
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+        
+        .statute {
+            color: #a3a3a3;
+            font-family: "Courier New", monospace;
             font-size: 12px;
         }
-        a {
-            color: #f00;
-            text-decoration: none;
+        
+        .footer {
+            text-align: center;
+            padding: 30px;
+            font-size: 12px;
+            color: #525252;
         }
-        .warning {
-            font-size: 24px;
-            font-weight: bold;
-        }
-        .subtext {
-            font-size: 16px;
-            margin-top: 20px;
-            color: #ccc;
+        
+        @media (max-width: 768px) {
+            .error-code {
+                font-size: 48px;
+            }
+            
+            .error-title {
+                font-size: 22px;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>You are unwanted here.</h1>
-    </header>
-    <main>
-        <p class="warning">Unauthorized Access is Prohibited.</p>
-        <p class="subtext">This proxy is not for public use.<br>If you're looking for something else, move along.</p>
-    </main>
-    <footer>
-        <p>Monitoring Enabled. Your IP has been logged.</p>
-    </footer>
+    <div class="container">
+        <div class="header">
+            <div class="error-code">403</div>
+            <div class="error-title">Access to this resource has been denied</div>
+            <div class="timestamp">Incident logged: <span id="timestamp"></span> UTC</div>
+        </div>
+        
+        <div class="content">
+            <div class="section">
+                <div class="section-title">Access Violation Summary</div>
+                <div class="section-content">
+                    Your request has been identified as unauthorized access to a protected system. This endpoint implements access control policies in accordance with organizational security requirements and applicable federal regulations.
+                </div>
+                
+                <div class="warning-box">
+                    <p><strong>Notice:</strong> All access attempts to this system are monitored, logged, and analyzed. Unauthorized access attempts may be subject to investigation and enforcement action under applicable law.</p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">Incident Information</div>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-label">Request Method</div>
+                        <div class="info-value" id="method">GET</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Status Code</div>
+                        <div class="info-value">403 Forbidden</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Access Policy</div>
+                        <div class="info-value">Authentication Required</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Incident Reference</div>
+                        <div class="info-value" id="incident-id"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">Resolution</div>
+                <div class="section-content">
+                    If you believe you should have access to this resource, please contact the system administrator with the incident reference number above. Ensure you have obtained proper authorization before attempting to access protected systems or data.
+                    <br><br>
+                    Repeated unauthorized access attempts from your network may result in additional restrictions or referral to appropriate authorities.
+                </div>
+            </div>
+        </div>
+        
+        <div class="legal">
+            <div class="legal-title">Legal Notice</div>
+            <div class="legal-text">
+                This system is private property. Unauthorized access to this system is prohibited and may be subject to criminal prosecution under the Computer Fraud and Abuse Act, <span class="statute">18 U.S.C. § 1030</span>, and other applicable federal and state laws.
+            </div>
+            <div class="legal-text">
+                By continuing to access or attempt to access this system, you acknowledge that you have no expectation of privacy in your activities, and that your access may be monitored and recorded for security, legal, and administrative purposes.
+            </div>
+            <div class="legal-text">
+                Evidence of unauthorized access attempts may be provided to law enforcement agencies in accordance with applicable legal requirements and organizational policies.
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        Incident response and security operations managed in accordance with industry standards
+    </div>
+    
+    <script>
+        
+        function updateTimestamp() {
+            const now = new Date();
+            document.getElementById('timestamp').textContent = now.toISOString();
+        }
+        
+        
+        function generateIncidentId() {
+            const timestamp = Date.now().toString(36).toUpperCase();
+            const random = Math.random().toString(36).substring(2, 8).toUpperCase();
+            return `INC-${timestamp}-${random}`;
+        }
+        
+        // Display request method
+        document.getElementById('method').textContent = 
+            (new URLSearchParams(window.location.search).get('method') || 'GET').toUpperCase();
+        
+        document.getElementById('incident-id').textContent = generateIncidentId();
+        updateTimestamp();
+    </script>
 </body>
 </html>
